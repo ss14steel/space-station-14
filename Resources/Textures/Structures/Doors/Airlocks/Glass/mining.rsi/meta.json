@@ -111,7 +111,7 @@
       ]
     },
     {
-      "name": "panel_open",
+      "name": "panel_closed",
       "delays": [
         [
           1
