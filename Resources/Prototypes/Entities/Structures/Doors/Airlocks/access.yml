@@ -451,7 +451,7 @@
 
 # Glass Airlocks
 - type: entity
-  parent: AirlockGlass
+  parent: AirlockServiceGlass
   id: AirlockServiceGlassLocked
   suffix: Service, Locked
   components:

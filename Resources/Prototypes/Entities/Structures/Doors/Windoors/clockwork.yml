@@ -21,7 +21,7 @@
     - state: emergency_unlit
       shader: unshaded
       map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
-    - state: panel_open
+    - state: panel_closed
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
     - state: electrified_ai
       sprite: Interface/Misc/ai_hud.rsi

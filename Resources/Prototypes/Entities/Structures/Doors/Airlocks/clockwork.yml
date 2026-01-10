@@ -12,6 +12,8 @@
     - board
   - type: Paintable
     group: null
+  - type: Airlock
+    openPanelVisible: true
 
 - type: entity
   parent: AirlockGlass
@@ -29,3 +31,5 @@
     price: 165
   - type: Paintable
     group: null
+  - type: Airlock
+    openPanelVisible: true

@@ -33,7 +33,7 @@
     - state: emergency_unlit
       map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
       shader: unshaded
-    - state: panel_open
+    - state: panel_closed
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
     - state: electrified_ai
       sprite: Interface/Misc/ai_hud.rsi
@@ -208,7 +208,7 @@
   - type: Occluder
     enabled: false
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/glass.rsi
+    sprite: Structures/Doors/Airlocks/Glass/basic.rsi
   - type: AnimationPlayer
   - type: Fixtures
     fixtures:
@@ -235,3 +235,12 @@
     tags:
     - GlassAirlock
       # This tag is used to navigate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, AirlockExternal, AirlockExternalGlass and HighSecDoor
+
+- type: entity
+  id: AirlockServiceGlass
+  parent: AirlockGlass
+  components:
+  - type: Airlock
+    openPanelVisible: true
+  - type: Sprite
+    sprite: Structures/Doors/Airlocks/Glass/glass.rsi
