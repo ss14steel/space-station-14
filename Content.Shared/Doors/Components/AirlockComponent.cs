@@ -24,7 +24,7 @@ public sealed partial class AirlockComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField, AutoNetworkedField]
     public bool EmergencyAccess = false;
-	
+
     /// <summary>
     /// Sound to play when the airlock emergency access is turned on.
     /// </summary>
@@ -128,10 +128,16 @@ public sealed partial class AirlockComponent : Component
     public string ClosingPanelSpriteState = "panel_closing";
 
     /// <summary>
+    /// The sprite state used for the airlock panel when the airlock is open.
+    /// </summary>
+    [DataField]
+    public string OpenPanelSpriteState = "panel_open";
+
+    /// <summary>
     /// The sprite state used for the airlock panel when the airlock is closed.
     /// </summary>
     [DataField]
-    public string OpenPanelSpriteState = "panel_open"; // TODO: Renaming required when a separate sprite state for panels on open airlocks is added.
+    public string ClosedPanelSpriteState = "panel_closed";
 
     /// <summary>
     /// The sprite state used for the open airlock lights.

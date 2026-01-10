@@ -95,8 +95,8 @@ public sealed class AirlockSystem : SharedAirlockSystem
             emergencyLightsVisible = _appearanceSystem.TryGetData<bool>(uid, DoorVisuals.EmergencyLights, out var eaLights, args.Component) && eaLights;
             unlitVisible =
                     (state == DoorState.Closing
-                ||  state == DoorState.Opening
-                ||  state == DoorState.Denying
+                || state == DoorState.Opening
+                || state == DoorState.Denying
                 || (state == DoorState.Open && comp.OpenUnlitVisible)
                 || (_appearanceSystem.TryGetData<bool>(uid, DoorVisuals.ClosedLights, out var closedLights, args.Component) && closedLights))
                     && !boltedVisible && !emergencyLightsVisible;
@@ -110,9 +110,9 @@ public sealed class AirlockSystem : SharedAirlockSystem
                 (uid, args.Sprite),
                 DoorVisualLayers.BaseEmergencyAccess,
                     emergencyLightsVisible
-                &&  state != DoorState.Open
-                &&  state != DoorState.Opening
-                &&  state != DoorState.Closing
+                && state != DoorState.Open
+                && state != DoorState.Opening
+                && state != DoorState.Closing
                 && !boltedVisible
             );
         }
@@ -122,11 +122,17 @@ public sealed class AirlockSystem : SharedAirlockSystem
             case DoorState.Open:
                 _sprite.LayerSetRsiState((uid, args.Sprite), DoorVisualLayers.BaseUnlit, comp.ClosingSpriteState);
                 _sprite.LayerSetAnimationTime((uid, args.Sprite), DoorVisualLayers.BaseUnlit, 0);
+                if (comp.OpenPanelVisible && comp.AnimatePanel)
+                {
+                    _sprite.LayerSetRsiState((uid, args.Sprite), WiresVisualLayers.MaintenancePanel, comp.OpenPanelSpriteState);
+                    _sprite.LayerSetAnimationTime((uid, args.Sprite), WiresVisualLayers.MaintenancePanel, 0);
+                    _sprite.LayerSetAutoAnimated((uid, args.Sprite), WiresVisualLayers.MaintenancePanel, true);
+                }
                 break;
             case DoorState.Closed:
                 _sprite.LayerSetRsiState((uid, args.Sprite), DoorVisualLayers.BaseUnlit, comp.OpeningSpriteState);
                 _sprite.LayerSetAnimationTime((uid, args.Sprite), DoorVisualLayers.BaseUnlit, 0);
-                _sprite.LayerSetRsiState((uid, args.Sprite), WiresVisualLayers.MaintenancePanel, comp.OpenPanelSpriteState);
+                _sprite.LayerSetRsiState((uid, args.Sprite), WiresVisualLayers.MaintenancePanel, comp.ClosedPanelSpriteState);
                 _sprite.LayerSetAnimationTime((uid, args.Sprite), WiresVisualLayers.MaintenancePanel, 0);
                 _sprite.LayerSetAutoAnimated((uid, args.Sprite), WiresVisualLayers.MaintenancePanel, true);
                 break;
